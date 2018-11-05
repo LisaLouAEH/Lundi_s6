@@ -1,0 +1,28 @@
+<h1>S'inscrire à The Club</h1>
+<h3>Formulaire "version form_for"</h3>
+  <div class="form-row">
+
+    <%= form_for @user, url: {action: "create"}, html: {class: "col-md-6"} do |f| %>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label "Votre prénom"%>
+            <%= f.text_field :first_name, placeholder: 'jean', class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Votre nom"%>
+            <%= f.text_field :last_name, placeholder: 'dupont', class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Votre email"%>
+            <%= f.text_field :email, placeholder: 'jean.dupont@mail.com', class: "form-control"%>
+          </div>
+        </div>
+
+      <div class="col-md-12 form-group">
+        <%= f.submit "Valider", class: "btn btn-outline-success col-md-12" %>
+      </div>
+    <% end %>
+  </div>
+</div>
