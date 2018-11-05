@@ -18,14 +18,15 @@ class SessionsController < ApplicationController
         end
     end
 
-    def destroy 
-        session.delete(:user)
+    def destroy
+        session.delete(:user_id)
+        @current_user = nil
         redirect_to '/', flash: {success: "You are disconnected"}    
     end
 
 
     def show 
-        unless logged_in
+        unless logged_in?
             redirect_to login_path
         end 
 

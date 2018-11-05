@@ -16,7 +16,53 @@
 
   <body>
 
-  <%= render '/layouts/navbar' %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<%if logged_in?  %>
+
+  <p class="navbar-brand"><%= link_to "The club", club_path %><p>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/club">The club</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="<%= logout_path %>" role="button" data-confirm="sure?" data-method="DELETE">log out</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+
+  <%else%>
+  <p class="navbar-brand"><%= link_to "The club", root_path %></p>
+<div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link"><%= link_to 'signup', new_user_path %><span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link"><%= link_to 'LogIn', login_path %></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+
+  
+<% end %>
+</nav>
+  <!--///////////////////////////////////////////////////////////////////////////////-->
   <% if flash[:info]%>
      <p class="alert alert-info"><%=flash[:info]%></p>
    <% elsif flash[:danger]%>
