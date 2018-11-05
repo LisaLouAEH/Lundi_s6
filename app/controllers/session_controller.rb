@@ -1,12 +1,18 @@
-##erreur 1 :  
-* impossible d'afficher le flash danger avec ces lignes de code(pas de msg d'erreur):
-```def create 
+class SessionController < ApplicationController
+    def new 
+    end
+
+    def create 
         user = User.find_by(email: params[:session][:email].downcase)
         if user 
-            #login
+            log_in user 
+            redirect_to user
         else 
             flash.now[:danger] = "Invalid email"
             render 'new'
         end
-    end```  
-*
+    end
+
+    def destroy 
+    end
+end
