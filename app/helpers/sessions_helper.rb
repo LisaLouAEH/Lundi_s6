@@ -5,7 +5,7 @@ module SessionsHelper
     end
 
     def current_user
-    puts "C'EST MOI QUI FAIT CHIER : METHODE CURRENT_USER DANS SESSIONSHELPER"
+    puts "accés @current_user ok!"
      @current_user ||= User.find_by(id: session[:user_id])
     end 
 

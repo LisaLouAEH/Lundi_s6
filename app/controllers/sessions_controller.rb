@@ -21,19 +21,19 @@ class SessionsController < ApplicationController
     def destroy
         session.delete(:user_id)
         @current_user = nil
+        puts "Alloooo current_user DESTROY !!!"
         redirect_to '/', flash: {success: "You are disconnected"}    
     end
 
 
     def show 
         unless logged_in?
+            puts "Je suis le user et je me dirige vers la page login_path"
             redirect_to login_path
         end 
 
     @first_name = @current_user.first_name
-
-        puts "user ID= #{@current_user.id}"
-        puts "user Fisrt= #{@current_user.first_name}"
+        puts "Alloooo current_user SHOW !!!"
     end
 
     def club
